@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Google kskskskks</title>
+
+    <style>
+        #divBusca{
+  background-color:#2F4F4F;
+  border:solid 1px;
+  border-radius:15px;
+  width:300px;
+}
+
+.txtBusca{
+
+  font-style:italic;
+  font-size:18px;
+  border:none;
+  height:32px;
+  width:260px;
+  background-color:#2F4F4F;
+  border:solid 1px;
+  border-radius:15px;
+}
+    </style>
+</head>
+<body>
+    
+
+    <span id="res"></span>
+
+
+    <div id="">
+        <br><br>
+        <center>
+        <input type="text" class="txtBusca" id="search_text" placeholder="Buscar..."/>
+        <button type="submit">search</button>
+        <br><br><br>
+    </center>
+      </div>
+
+      <div>
+
+
+      </div>
+
+    <script>
+
+    const btn = document.querySelector("button");
+
+btn.addEventListener("click",  function  pesquisa(){
+
+const tx = document.getElementById('search_text').value
+
+const options = {
+	method: 'GET',
+	headers: {
+		'X-User-Agent': 'desktop',
+        'X-Proxy-Location': 'Br',
+		'X-RapidAPI-Key': '3a1ae412admshce562d04839d903p198bdajsn233e22a11ff0',
+		'X-RapidAPI-Host': 'google-search3.p.rapidapi.com'
+	}
+};
+
+fetch(`https://google-search3.p.rapidapi.com/api/v1/search/q=${tx}`, options)
+    .then(response => response.json())
+	.then(response => {
+        const bo = document.body 
+        const lista  = document.createElement('li')
+
+        const resultado0 = response['results'][0]["description"]
+        const resultado1 = response['results'][1]["description"]
+        const resultado2 = response['results'][2]["description"]
+        const resultado3 = response['results'][3]["description"]
+        const resultado4 = response['results'][4]["description"]
+        const resultado5 = response['results'][5]["description"]
+        const resultado6 = response['results'][6]["description"]
+        const resultado7 = response['results'][7]["description"]
+        const resultado8 = response['results'][8]["description"]
+        const resultado9 = response['results'][9]["description"]
+        
+
+        var html = `        <div class="card-columns">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Resuldado da Base de Dados 1</h5>
+                <p class="card-text"> ${resultado0}</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Resuldado da Base de Dados 4</h5>
+                <p class="card-text">${resultado3}</p>
+ 
+              </div>
+            </div>
+        
+            <div class="card text-center">
+              <div class="card-body">
+                <h5 class="card-title">Resuldado da Base de Dados 7</h5>
+                <p class="card-text">${resultado6}</p>
+ 
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Resuldado da Base de Dados 2</h5>
+                <p class="card-text">${resultado1}</p>
+ 
+              </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Resuldado da Base de Dados 5</h5>
+                  <p class="card-text">${resultado4}</p>
+   
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Resuldado da Base de Dados 8</h5>
+                  <p class="card-text">${resultado7}</p>
+   
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Resuldado da Base de Dados 3</h5>
+                  <p class="card-text">${resultado2}</p>
+   
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Resuldado da Base de Dados 6</h5>
+                  <p class="card-text">${resultado5}</p>
+   
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Resuldado da Base de Dados 9</h5>
+                  <p class="card-text">${resultado8}</p>
+   
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Resuldado da Base de Dados 10</h5>
+                  <p class="card-text">${resultado9}</p>
+   
+                </div>
+              </div>
+          </div>`
+
+
+
+document.body.innerHTML += html;
+
+        console.log(response)
+    
+    })
+	.catch(err => console.error(err.message));
+})
+    </script>
+
+
+<!-- style  / CSS  / bootstrap -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<!-- API CASO DE ERROR NO SISTEMA https://http.cat/ -->
